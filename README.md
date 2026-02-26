@@ -171,6 +171,11 @@ zig build run-1-5
 zig build run-1-6
 ```
 
+### Lesson 1-7 실행 (배열과 슬라이스)
+```bash
+zig build run-1-7
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -192,6 +197,7 @@ zig build
 - **1-4**: 함수(Functions)와 에러 핸들링의 기초 ✅
 - **1-5**: 구조체(Structs)와 메서드 ✅
 - **1-6**: 포인터(Pointers)와 메모리 관리 ✅
+- **1-7**: 배열(Arrays)과 슬라이스(Slices) - 메모리 안전의 파수꾼 ✅
 
 ### Zig 전공 201 (고급)
 - **2-1**: 메모리와 포인터의 명시적 관리 📅
