@@ -236,11 +236,32 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_11_step.dependOn(&run_lesson_1_11.step);
 
     // ============================================================================
+    // Lesson 1-12: 멀티스레딩과 원자적 연산
+    // ============================================================================
+
+    const lesson_1_12 = b.addExecutable(.{
+        .name = "lesson-1-12",
+        .root_source_file = b.path("src/lesson_1_12.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_12);
+
+    const run_lesson_1_12 = b.addRunArtifact(lesson_1_12);
+    run_lesson_1_12.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_12.addArgs(args);
+    }
+
+    const run_lesson_1_12_step = b.step("run-1-12", "Run Lesson 1-12 (멀티스레딩)");
+    run_lesson_1_12_step.dependOn(&run_lesson_1_12.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("src/lesson_1_11.zig"),
+        .root_source_file = b.path("src/lesson_1_12.zig"),
         .target = target,
         .optimize = optimize,
     });

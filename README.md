@@ -196,6 +196,11 @@ zig build run-1-10
 zig build run-1-11
 ```
 
+### Lesson 1-12 실행 (멀티스레딩)
+```bash
+zig build run-1-12
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -224,8 +229,9 @@ zig build
 
 ### Zig 전공 201 (고급)
 - **1-11**: C 호환성(C Interoperability) - 기존 유산과의 완벽한 결합 ✅
-- **2-1**: 비동기 프로그래밍과 멀티스레딩 📅
-- **2-2**: 네트워크 프로그래밍과 시스템 인터페이스 📅
+- **1-12**: 멀티스레딩(Multi-threading)과 원자적 연산(Atomics) ✅
+- **2-1**: 비동기 프로그래밍과 async/await 📅
+- **2-2**: 네트워크 프로그래밍과 소켓 📅
 - **2-3**: 고성능 알고리즘과 SIMD 최적화 📅
 
 ### Zig 전공 301 (실무)
