@@ -452,6 +452,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_2_step.dependOn(&run_lesson_3_2.step);
 
     // ============================================================================
+    // Lesson 3-3: 물리 메모리 관리자(PMM) 및 비트맵 설계
+    // ============================================================================
+
+    const lesson_3_3 = b.addExecutable(.{
+        .name = "lesson-3-3",
+        .root_source_file = b.path("src/lesson_3_3.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_3.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_3);
+
+    const run_lesson_3_3 = b.addRunArtifact(lesson_3_3);
+    run_lesson_3_3.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_3_step = b.step("run-3-3", "Run Lesson 3-3 (물리 메모리 관리자)");
+    run_lesson_3_3_step.dependOn(&run_lesson_3_3.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
