@@ -110,11 +110,32 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_5_step.dependOn(&run_lesson_1_5.step);
 
     // ============================================================================
+    // Lesson 1-6: 포인터와 메모리 관리
+    // ============================================================================
+
+    const lesson_1_6 = b.addExecutable(.{
+        .name = "lesson-1-6",
+        .root_source_file = b.path("src/lesson_1_6.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_6);
+
+    const run_lesson_1_6 = b.addRunArtifact(lesson_1_6);
+    run_lesson_1_6.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_6.addArgs(args);
+    }
+
+    const run_lesson_1_6_step = b.step("run-1-6", "Run Lesson 1-6 (포인터와 메모리)");
+    run_lesson_1_6_step.dependOn(&run_lesson_1_6.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("src/lesson_1_5.zig"),
+        .root_source_file = b.path("src/lesson_1_6.zig"),
         .target = target,
         .optimize = optimize,
     });

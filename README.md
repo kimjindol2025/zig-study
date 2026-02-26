@@ -166,6 +166,11 @@ zig build run-1-4
 zig build run-1-5
 ```
 
+### Lesson 1-6 실행 (포인터와 메모리 관리)
+```bash
+zig build run-1-6
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -186,6 +191,7 @@ zig build
 - **1-3**: 제어문 - if, while, for 그리고 특별한 switch ✅
 - **1-4**: 함수(Functions)와 에러 핸들링의 기초 ✅
 - **1-5**: 구조체(Structs)와 메서드 ✅
+- **1-6**: 포인터(Pointers)와 메모리 관리 ✅
 
 ### Zig 전공 201 (고급)
 - **2-1**: 메모리와 포인터의 명시적 관리 📅
