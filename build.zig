@@ -383,6 +383,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_2_5_step.dependOn(&run_lesson_2_5.step);
 
     // ============================================================================
+    // Lesson 2-6: 보안(Security) - 암호화와 인증 프로토콜
+    // ============================================================================
+
+    const lesson_2_6 = b.addExecutable(.{
+        .name = "lesson-2-6",
+        .root_source_file = b.path("src/lesson_2_6.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_2_6);
+
+    const run_lesson_2_6 = b.addRunArtifact(lesson_2_6);
+    run_lesson_2_6.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_2_6.addArgs(args);
+    }
+
+    const run_lesson_2_6_step = b.step("run-2-6", "Run Lesson 2-6 (보안 및 암호화 설계)");
+    run_lesson_2_6_step.dependOn(&run_lesson_2_6.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
