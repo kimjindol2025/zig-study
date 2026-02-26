@@ -215,11 +215,32 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_10_step.dependOn(&run_lesson_1_10.step);
 
     // ============================================================================
+    // Lesson 1-11: C 호환성
+    // ============================================================================
+
+    const lesson_1_11 = b.addExecutable(.{
+        .name = "lesson-1-11",
+        .root_source_file = b.path("src/lesson_1_11.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_11);
+
+    const run_lesson_1_11 = b.addRunArtifact(lesson_1_11);
+    run_lesson_1_11.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_11.addArgs(args);
+    }
+
+    const run_lesson_1_11_step = b.step("run-1-11", "Run Lesson 1-11 (C 호환성)");
+    run_lesson_1_11_step.dependOn(&run_lesson_1_11.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("src/lesson_1_10.zig"),
+        .root_source_file = b.path("src/lesson_1_11.zig"),
         .target = target,
         .optimize = optimize,
     });
