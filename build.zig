@@ -362,6 +362,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_2_4_step.dependOn(&run_lesson_2_4.step);
 
     // ============================================================================
+    // Lesson 2-5: 로깅 시스템 및 런타임 모니터링
+    // ============================================================================
+
+    const lesson_2_5 = b.addExecutable(.{
+        .name = "lesson-2-5",
+        .root_source_file = b.path("src/lesson_2_5.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_2_5);
+
+    const run_lesson_2_5 = b.addRunArtifact(lesson_2_5);
+    run_lesson_2_5.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_2_5.addArgs(args);
+    }
+
+    const run_lesson_2_5_step = b.step("run-2-5", "Run Lesson 2-5 (로깅 시스템 및 모니터링)");
+    run_lesson_2_5_step.dependOn(&run_lesson_2_5.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
