@@ -578,6 +578,86 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_8_step.dependOn(&run_lesson_3_8.step);
 
     // ============================================================================
+    // PostDoc Phase 1: IPC 최적화
+    // ============================================================================
+
+    const postdoc_1 = b.addExecutable(.{
+        .name = "postdoc-1-ipc-optimization",
+        .root_source_file = b.path("src/postdoc_1_ipc_optimization.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    postdoc_1.root_module.stack_protector = false;
+    b.installArtifact(postdoc_1);
+
+    const run_postdoc_1 = b.addRunArtifact(postdoc_1);
+    run_postdoc_1.step.dependOn(b.getInstallStep());
+
+    const run_postdoc_1_step = b.step("run-postdoc-1", "Run PostDoc Phase 1 (IPC 최적화)");
+    run_postdoc_1_step.dependOn(&run_postdoc_1.step);
+
+    // ============================================================================
+    // PostDoc Phase 2: 분산 IPC
+    // ============================================================================
+
+    const postdoc_2 = b.addExecutable(.{
+        .name = "postdoc-2-distributed-ipc",
+        .root_source_file = b.path("src/postdoc_2_distributed_ipc.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    postdoc_2.root_module.stack_protector = false;
+    b.installArtifact(postdoc_2);
+
+    const run_postdoc_2 = b.addRunArtifact(postdoc_2);
+    run_postdoc_2.step.dependOn(b.getInstallStep());
+
+    const run_postdoc_2_step = b.step("run-postdoc-2", "Run PostDoc Phase 2 (분산 IPC)");
+    run_postdoc_2_step.dependOn(&run_postdoc_2.step);
+
+    // ============================================================================
+    // PostDoc Phase 3: 분산 스케줄링
+    // ============================================================================
+
+    const postdoc_3 = b.addExecutable(.{
+        .name = "postdoc-3-distributed-scheduling",
+        .root_source_file = b.path("src/postdoc_3_distributed_scheduling.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    postdoc_3.root_module.stack_protector = false;
+    b.installArtifact(postdoc_3);
+
+    const run_postdoc_3 = b.addRunArtifact(postdoc_3);
+    run_postdoc_3.step.dependOn(b.getInstallStep());
+
+    const run_postdoc_3_step = b.step("run-postdoc-3", "Run PostDoc Phase 3 (분산 스케줄링)");
+    run_postdoc_3_step.dependOn(&run_postdoc_3.step);
+
+    // ============================================================================
+    // PostDoc Phase 4: RTOS 검증
+    // ============================================================================
+
+    const postdoc_4 = b.addExecutable(.{
+        .name = "postdoc-4-rtos-verification",
+        .root_source_file = b.path("src/postdoc_4_rtos_verification.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    postdoc_4.root_module.stack_protector = false;
+    b.installArtifact(postdoc_4);
+
+    const run_postdoc_4 = b.addRunArtifact(postdoc_4);
+    run_postdoc_4.step.dependOn(b.getInstallStep());
+
+    const run_postdoc_4_step = b.step("run-postdoc-4", "Run PostDoc Phase 4 (RTOS 검증)");
+    run_postdoc_4_step.dependOn(&run_postdoc_4.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
