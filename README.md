@@ -201,6 +201,11 @@ zig build run-1-11
 zig build run-1-12
 ```
 
+### Lesson 1-13 실행 (대규모 시스템 아키텍처)
+```bash
+zig build run-1-13
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -230,6 +235,7 @@ zig build
 ### Zig 전공 201 (고급)
 - **1-11**: C 호환성(C Interoperability) - 기존 유산과의 완벽한 결합 ✅
 - **1-12**: 멀티스레딩(Multi-threading)과 원자적 연산(Atomics) ✅
+- **1-13**: 대규모 시스템 아키텍처 - 3계층 설계의 정석 ✅ 🎓 **전공 101, 201 완성!**
 - **2-1**: 비동기 프로그래밍과 async/await 📅
 - **2-2**: 네트워크 프로그래밍과 소켓 📅
 - **2-3**: 고성능 알고리즘과 SIMD 최적화 📅
@@ -300,3 +306,4 @@ Hello, Zig Graduate School!
 **기록이 증명이다** - Zig 전공을 시작합니다! 🦎
 
 2026년 2월 26일 - Assignment 1-1 완성
+2026년 2월 26일 - **Zig 전공 101, 201 완성!** 🎓 (Lesson 1-13: 대규모 시스템 아키텍처)

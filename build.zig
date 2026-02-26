@@ -257,6 +257,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_12_step.dependOn(&run_lesson_1_12.step);
 
     // ============================================================================
+    // Lesson 1-13: 대규모 시스템 아키텍처
+    // ============================================================================
+
+    const lesson_1_13 = b.addExecutable(.{
+        .name = "lesson-1-13",
+        .root_source_file = b.path("src/lesson_1_13.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_13);
+
+    const run_lesson_1_13 = b.addRunArtifact(lesson_1_13);
+    run_lesson_1_13.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_13.addArgs(args);
+    }
+
+    const run_lesson_1_13_step = b.step("run-1-13", "Run Lesson 1-13 (대규모 시스템 아키텍처)");
+    run_lesson_1_13_step.dependOn(&run_lesson_1_13.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
