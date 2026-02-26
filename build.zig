@@ -47,11 +47,32 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_2_step.dependOn(&run_lesson_1_2.step);
 
     // ============================================================================
+    // Lesson 1-3: 제어문 - if, while, for, switch
+    // ============================================================================
+
+    const lesson_1_3 = b.addExecutable(.{
+        .name = "lesson-1-3",
+        .root_source_file = b.path("src/lesson_1_3.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_3);
+
+    const run_lesson_1_3 = b.addRunArtifact(lesson_1_3);
+    run_lesson_1_3.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_3.addArgs(args);
+    }
+
+    const run_lesson_1_3_step = b.step("run-1-3", "Run Lesson 1-3 (제어문)");
+    run_lesson_1_3_step.dependOn(&run_lesson_1_3.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("src/lesson_1_2.zig"),
+        .root_source_file = b.path("src/lesson_1_3.zig"),
         .target = target,
         .optimize = optimize,
     });

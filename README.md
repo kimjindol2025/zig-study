@@ -151,6 +151,11 @@ zig build run
 zig build run-1-2
 ```
 
+### Lesson 1-3 실행 (제어문)
+```bash
+zig build run-1-3
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -168,7 +173,7 @@ zig build
 ### Zig 전공 101 (기초)
 - **1-1**: Hello, Zig! (설치와 첫 컴파일) ✅
 - **1-2**: 변수, 상수, 그리고 엄격한 타입 시스템 ✅
-- **1-3**: 제어문 - if, while, for 그리고 Zig만의 switch 📅
+- **1-3**: 제어문 - if, while, for 그리고 특별한 switch ✅
 
 ### Zig 전공 201 (고급)
 - **2-1**: 메모리와 포인터의 명시적 관리 📅
