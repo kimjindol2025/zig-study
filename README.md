@@ -176,6 +176,11 @@ zig build run-1-6
 zig build run-1-7
 ```
 
+### Lesson 1-8 실행 (열거형과 태그된 공용체)
+```bash
+zig build run-1-8
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -198,6 +203,7 @@ zig build
 - **1-5**: 구조체(Structs)와 메서드 ✅
 - **1-6**: 포인터(Pointers)와 메모리 관리 ✅
 - **1-7**: 배열(Arrays)과 슬라이스(Slices) - 메모리 안전의 파수꾼 ✅
+- **1-8**: 열거형(Enums)과 태그된 공용체(Tagged Unions) - 상태 설계의 정석 ✅
 
 ### Zig 전공 201 (고급)
 - **2-1**: 메모리와 포인터의 명시적 관리 📅
