@@ -271,6 +271,11 @@ zig build run-3-6
 zig build run-3-7
 ```
 
+### Lesson 3-8 실행 (마이크로커널 완성) 🎓 최종 단계
+```bash
+zig build run-3-8
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -318,7 +323,7 @@ zig build
 ### Zig 전공 400+ (실무)
 - **3-6**: 파일 시스템(File System) - 데이터의 영속적 기록 ✅ 💾 **영속 저장소!**
 - **3-7**: 시스템 호출(System Call) - Ring 3 진입 ✅ 🛂 **권위와 자유!**
-- **3-8**: 최종 프로젝트 - 마이크로 커널(Microkernel) 완성 📅 🎓 **최종 목표!**
+- **3-8**: 최종 프로젝트 - 마이크로 커널(Microkernel) 완성 ✅ 🎓 **System Master!**
 
 ---
 

@@ -557,6 +557,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_7_step.dependOn(&run_lesson_3_7.step);
 
     // ============================================================================
+    // Lesson 3-8: 최종 프로젝트 - 마이크로커널 아키텍처 완성
+    // ============================================================================
+
+    const lesson_3_8 = b.addExecutable(.{
+        .name = "lesson-3-8",
+        .root_source_file = b.path("src/lesson_3_8.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_8.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_8);
+
+    const run_lesson_3_8 = b.addRunArtifact(lesson_3_8);
+    run_lesson_3_8.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_8_step = b.step("run-3-8", "Run Lesson 3-8 (마이크로커널 완성)");
+    run_lesson_3_8_step.dependOn(&run_lesson_3_8.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
