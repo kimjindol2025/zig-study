@@ -341,6 +341,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_2_3_step.dependOn(&run_lesson_2_3.step);
 
     // ============================================================================
+    // Lesson 2-4: RESTful API 설계 및 JSON 직렬화
+    // ============================================================================
+
+    const lesson_2_4 = b.addExecutable(.{
+        .name = "lesson-2-4",
+        .root_source_file = b.path("src/lesson_2_4.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_2_4);
+
+    const run_lesson_2_4 = b.addRunArtifact(lesson_2_4);
+    run_lesson_2_4.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_2_4.addArgs(args);
+    }
+
+    const run_lesson_2_4_step = b.step("run-2-4", "Run Lesson 2-4 (RESTful API)");
+    run_lesson_2_4_step.dependOn(&run_lesson_2_4.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
