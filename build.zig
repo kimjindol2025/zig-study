@@ -278,6 +278,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_13_step.dependOn(&run_lesson_1_13.step);
 
     // ============================================================================
+    // Lesson 2-1: 고성능 네트워크 프로그래밍 (TCP/UDP)
+    // ============================================================================
+
+    const lesson_2_1 = b.addExecutable(.{
+        .name = "lesson-2-1",
+        .root_source_file = b.path("src/lesson_2_1.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_2_1);
+
+    const run_lesson_2_1 = b.addRunArtifact(lesson_2_1);
+    run_lesson_2_1.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_2_1.addArgs(args);
+    }
+
+    const run_lesson_2_1_step = b.step("run-2-1", "Run Lesson 2-1 (고성능 네트워크 프로그래밍)");
+    run_lesson_2_1_step.dependOn(&run_lesson_2_1.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
