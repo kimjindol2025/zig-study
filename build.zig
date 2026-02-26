@@ -431,6 +431,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_1_step.dependOn(&run_lesson_3_1.step);
 
     // ============================================================================
+    // Lesson 3-2: GDT 및 IDT 설계 (CPU 보호 메커니즘)
+    // ============================================================================
+
+    const lesson_3_2 = b.addExecutable(.{
+        .name = "lesson-3-2",
+        .root_source_file = b.path("src/lesson_3_2.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_2.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_2);
+
+    const run_lesson_3_2 = b.addRunArtifact(lesson_3_2);
+    run_lesson_3_2.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_2_step = b.step("run-3-2", "Run Lesson 3-2 (GDT 및 IDT 설계)");
+    run_lesson_3_2_step.dependOn(&run_lesson_3_2.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
