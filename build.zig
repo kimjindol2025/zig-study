@@ -173,11 +173,32 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_8_step.dependOn(&run_lesson_1_8.step);
 
     // ============================================================================
+    // Lesson 1-9: 할당자(Allocators)
+    // ============================================================================
+
+    const lesson_1_9 = b.addExecutable(.{
+        .name = "lesson-1-9",
+        .root_source_file = b.path("src/lesson_1_9.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_9);
+
+    const run_lesson_1_9 = b.addRunArtifact(lesson_1_9);
+    run_lesson_1_9.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_9.addArgs(args);
+    }
+
+    const run_lesson_1_9_step = b.step("run-1-9", "Run Lesson 1-9 (할당자)");
+    run_lesson_1_9_step.dependOn(&run_lesson_1_9.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("src/lesson_1_8.zig"),
+        .root_source_file = b.path("src/lesson_1_9.zig"),
         .target = target,
         .optimize = optimize,
     });
