@@ -536,6 +536,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_6_step.dependOn(&run_lesson_3_6.step);
 
     // ============================================================================
+    // Lesson 3-7: 시스템 호출과 유저 모드(Ring 3) 진입
+    // ============================================================================
+
+    const lesson_3_7 = b.addExecutable(.{
+        .name = "lesson-3-7",
+        .root_source_file = b.path("src/lesson_3_7.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_7.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_7);
+
+    const run_lesson_3_7 = b.addRunArtifact(lesson_3_7);
+    run_lesson_3_7.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_7_step = b.step("run-3-7", "Run Lesson 3-7 (시스템 호출 설계)");
+    run_lesson_3_7_step.dependOn(&run_lesson_3_7.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 

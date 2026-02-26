@@ -266,6 +266,11 @@ zig build run-3-5
 zig build run-3-6
 ```
 
+### Lesson 3-7 실행 (시스템 호출 설계)
+```bash
+zig build run-3-7
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -312,8 +317,8 @@ zig build
 
 ### Zig 전공 400+ (실무)
 - **3-6**: 파일 시스템(File System) - 데이터의 영속적 기록 ✅ 💾 **영속 저장소!**
-- **3-7**: 제네릭 프로그래밍 (comptime) 📅
-- **3-8**: 고성능 알고리즘 (SIMD, 벤치마킹) 📅
+- **3-7**: 시스템 호출(System Call) - Ring 3 진입 ✅ 🛂 **권위와 자유!**
+- **3-8**: 최종 프로젝트 - 마이크로 커널(Microkernel) 완성 📅 🎓 **최종 목표!**
 
 ---
 
