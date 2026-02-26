@@ -494,6 +494,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_4_step.dependOn(&run_lesson_3_4.step);
 
     // ============================================================================
+    // Lesson 3-5: 프로세스와 스레드 - 컨텍스트 스위칭
+    // ============================================================================
+
+    const lesson_3_5 = b.addExecutable(.{
+        .name = "lesson-3-5",
+        .root_source_file = b.path("src/lesson_3_5.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_5.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_5);
+
+    const run_lesson_3_5 = b.addRunArtifact(lesson_3_5);
+    run_lesson_3_5.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_5_step = b.step("run-3-5", "Run Lesson 3-5 (프로세스와 스레드)");
+    run_lesson_3_5_step.dependOn(&run_lesson_3_5.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
