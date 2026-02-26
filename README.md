@@ -156,6 +156,11 @@ zig build run-1-2
 zig build run-1-3
 ```
 
+### Lesson 1-4 실행 (함수와 에러 핸들링)
+```bash
+zig build run-1-4
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -174,6 +179,7 @@ zig build
 - **1-1**: Hello, Zig! (설치와 첫 컴파일) ✅
 - **1-2**: 변수, 상수, 그리고 엄격한 타입 시스템 ✅
 - **1-3**: 제어문 - if, while, for 그리고 특별한 switch ✅
+- **1-4**: 함수(Functions)와 에러 핸들링의 기초 ✅
 
 ### Zig 전공 201 (고급)
 - **2-1**: 메모리와 포인터의 명시적 관리 📅
