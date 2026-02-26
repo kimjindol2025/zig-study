@@ -515,6 +515,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_5_step.dependOn(&run_lesson_3_5.step);
 
     // ============================================================================
+    // Lesson 3-6: 파일 시스템 - 데이터의 영속적 기록 설계
+    // ============================================================================
+
+    const lesson_3_6 = b.addExecutable(.{
+        .name = "lesson-3-6",
+        .root_source_file = b.path("src/lesson_3_6.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_6.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_6);
+
+    const run_lesson_3_6 = b.addRunArtifact(lesson_3_6);
+    run_lesson_3_6.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_6_step = b.step("run-3-6", "Run Lesson 3-6 (파일 시스템 설계)");
+    run_lesson_3_6_step.dependOn(&run_lesson_3_6.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
