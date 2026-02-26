@@ -473,6 +473,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_3_3_step.dependOn(&run_lesson_3_3.step);
 
     // ============================================================================
+    // Lesson 3-4: 가상 메모리(Paging) 및 페이지 테이블 관리
+    // ============================================================================
+
+    const lesson_3_4 = b.addExecutable(.{
+        .name = "lesson-3-4",
+        .root_source_file = b.path("src/lesson_3_4.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    lesson_3_4.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_4);
+
+    const run_lesson_3_4 = b.addRunArtifact(lesson_3_4);
+    run_lesson_3_4.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_4_step = b.step("run-3-4", "Run Lesson 3-4 (가상 메모리 및 페이징)");
+    run_lesson_3_4_step.dependOn(&run_lesson_3_4.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
