@@ -404,6 +404,33 @@ pub fn build(b: *std.Build) void {
     run_lesson_2_6_step.dependOn(&run_lesson_2_6.step);
 
     // ============================================================================
+    // Lesson 3-1: 베어 메탈(Bare Metal) 입문
+    // ============================================================================
+
+    const freestanding_target = b.resolveTargetQuery(.{
+        .cpu_arch = .x86_64,
+        .os_tag = .freestanding,
+    });
+
+    const lesson_3_1 = b.addExecutable(.{
+        .name = "lesson-3-1",
+        .root_source_file = b.path("src/lesson_3_1.zig"),
+        .target = freestanding_target,
+        .optimize = .ReleaseSafe,
+    });
+
+    // 표준 라이브러리 비활성화
+    lesson_3_1.root_module.stack_protector = false;
+
+    b.installArtifact(lesson_3_1);
+
+    const run_lesson_3_1 = b.addRunArtifact(lesson_3_1);
+    run_lesson_3_1.step.dependOn(b.getInstallStep());
+
+    const run_lesson_3_1_step = b.step("run-3-1", "Run Lesson 3-1 (베어 메탈 부트로더)");
+    run_lesson_3_1_step.dependOn(&run_lesson_3_1.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
