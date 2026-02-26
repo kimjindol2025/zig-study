@@ -320,6 +320,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_2_2_step.dependOn(&run_lesson_2_2.step);
 
     // ============================================================================
+    // Lesson 2-3: 캐싱 전략과 동시성 제어
+    // ============================================================================
+
+    const lesson_2_3 = b.addExecutable(.{
+        .name = "lesson-2-3",
+        .root_source_file = b.path("src/lesson_2_3.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_2_3);
+
+    const run_lesson_2_3 = b.addRunArtifact(lesson_2_3);
+    run_lesson_2_3.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_2_3.addArgs(args);
+    }
+
+    const run_lesson_2_3_step = b.step("run-2-3", "Run Lesson 2-3 (캐싱 전략)");
+    run_lesson_2_3_step.dependOn(&run_lesson_2_3.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
