@@ -299,6 +299,27 @@ pub fn build(b: *std.Build) void {
     run_lesson_2_1_step.dependOn(&run_lesson_2_1.step);
 
     // ============================================================================
+    // Lesson 2-2: 데이터베이스 연동 및 인터페이스 설계
+    // ============================================================================
+
+    const lesson_2_2 = b.addExecutable(.{
+        .name = "lesson-2-2",
+        .root_source_file = b.path("src/lesson_2_2.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_2_2);
+
+    const run_lesson_2_2 = b.addRunArtifact(lesson_2_2);
+    run_lesson_2_2.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_2_2.addArgs(args);
+    }
+
+    const run_lesson_2_2_step = b.step("run-2-2", "Run Lesson 2-2 (데이터베이스 연동)");
+    run_lesson_2_2_step.dependOn(&run_lesson_2_2.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
