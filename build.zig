@@ -194,11 +194,32 @@ pub fn build(b: *std.Build) void {
     run_lesson_1_9_step.dependOn(&run_lesson_1_9.step);
 
     // ============================================================================
+    // Lesson 1-10: Comptime
+    // ============================================================================
+
+    const lesson_1_10 = b.addExecutable(.{
+        .name = "lesson-1-10",
+        .root_source_file = b.path("src/lesson_1_10.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(lesson_1_10);
+
+    const run_lesson_1_10 = b.addRunArtifact(lesson_1_10);
+    run_lesson_1_10.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_lesson_1_10.addArgs(args);
+    }
+
+    const run_lesson_1_10_step = b.step("run-1-10", "Run Lesson 1-10 (Comptime)");
+    run_lesson_1_10_step.dependOn(&run_lesson_1_10.step);
+
+    // ============================================================================
     // 테스트
     // ============================================================================
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("src/lesson_1_9.zig"),
+        .root_source_file = b.path("src/lesson_1_10.zig"),
         .target = target,
         .optimize = optimize,
     });

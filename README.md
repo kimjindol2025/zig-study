@@ -186,6 +186,11 @@ zig build run-1-8
 zig build run-1-9
 ```
 
+### Lesson 1-10 실행 (Comptime)
+```bash
+zig build run-1-10
+```
+
 ### 모든 테스트 실행
 ```bash
 zig build test
@@ -210,6 +215,7 @@ zig build
 - **1-7**: 배열(Arrays)과 슬라이스(Slices) - 메모리 안전의 파수꾼 ✅
 - **1-8**: 열거형(Enums)과 태그된 공용체(Tagged Unions) - 상태 설계의 정석 ✅
 - **1-9**: 할당자(Allocators) - 힙 메모리의 명시적 제어 ✅
+- **1-10**: Comptime - 컴파일 타임에 실행되는 코드 ✅
 
 ### Zig 전공 201 (고급)
 - **2-1**: 메모리와 포인터의 명시적 관리 📅
